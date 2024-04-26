@@ -1,0 +1,91 @@
+dynamiczna alokacja pamięci
+int n;
+scanf(...n);
+
+int tab[n]; nie można było, bo rozmiar tablicy musi być stały
+tablica -> miejsce w pamięci
+więc trzeba zaalokowac miejsce w pamięci
+
+malloc -> do alokacji obszaru o rozmiarze sizeT, bo sizeof w bajtach zwraca, zwraca adres 
+10-el tablice
+int *t = malloc(40) [N * sizeof(int)]
+czyli t pokazuje na poczatek tablicy, początek obszaru pamięci zaalokowanej
+*(t+1) = 8, czyli bede miał 8 w drugiej komórce pamięci // lub t[1] = 8
+
+void - typ pusty
+
+*void -> to zwraca domyslnie malloc, bo domyślnie powinniśmy int *t = (int*)malloc(N * sizeof(int)), bo starsze kompilatory mogą się nie domyślec, że na inta rzutuje
+dzięki temu t to już tablica
+
+exit -> wychodzi z programu
+
+malloc -> po zaalokowaniu mogą być śmieci, niekoniecznie same zera
+
+
+calloc -> ma tylko 2 argumenty sizeT SizeTsize - >rozmiar pojedynczej komorki, automatycznie zeruje obszar, ktory został zaalokowany
+int *t2 = calloc(n, sizeof(int))
+
+dla tablic calloc, drzewa to lepiej malloc
+
+realloc -> do powiększenia obszaru, który mamy zaalokowany wskaźnik na obszar już zaalokowany i nowy rozmiar i przepisuje zawartość poprzedniego obszaru pamięci a reszte zeruje
+problem: zwraca nulla jeśli "przekroczymy pamieć"
+
+free -> zwalnia zaalokowany obszar pamięci (wraca do zasobów systemu operacyjnego), może zmienić wartość obszaru, ale wskaźnika nie wpływa i działa tylko dla tych co za pomocą calloca, malloca i realocca zostały zaalokowane obszary
+tylko na nie działa, np.tylko te tablice co realociem, mallociem i callocem
+free niczego nie usuwa, tylko zwalnia.
+wyzerować wskaźnik można dla bezpieczeństwa, żeby nie miał dostępu nikt, bo potem można przez przypadek coś zchrzanić mysląc, że nic nie ma a może być tam akurat, bo free zwalnia obszar a nie usuwa zawartości
+
+w pamieci tablice wielowymiarowe wiersza za wierszem
+jak zaalokowac taka tablice?
+1. tablica wskaznikow
+2. dowiazac dotakiego wskaznika tablice jednowymiarową
+
+i potem skoro ta tablica wskaznikow wskazuje na wiersze to potem mozna na kolumny kolejnym wyłuskaniem zrobić to
+
+tablica wskaznikow:
+int **tab; bo tablica adresow, adres adresow
+tab = (int**)malloc(n*sizeof(int*));
+
+i mamy pierwszy wiersz
+tab[0] = malloc(m * sizeof(int));
+w tab[0] bede mial adres tablicy m elementowej
+
+*(tab[0] + i) --> po kolumnach
+
+typedef pozwoli zdefiniowac wlasna nazwe typu
+głównie dla struktur, ułatwia to pracę ze strukturami
+
+
+
+kropka jak do pola struktury chcemy sie dostac to ma bardzo wysoki priorytet
+gets -> pobiera stringa, niebezpieczna, bo pozwala pobrac wiecej znakow niz zmienna zadeklarowana ma
+
+struktury mozna zwracac z funkcji
+bo tablic nie mozna normalnie
+ale mozna strukture zrobic, ktora bedzie miala jedna tablice i zwrocic ja, wtedy zwroci nam strukture, czyli de facto tablice
+struct tab {
+    int t[10];
+};
+
+struct tab fun(int n);
+struct t1
+t1.t[0] ???
+
+A CO JESLI MAM WSKAZNIK NA strukture
+*(sp).x = 8, bo . ma wiekszy priorytet
+sp to wskaznik na strukture
+sp -> x = 8
+
+jak pobieram? sp -> nazwa, bez &, bo string, łancuch 
+&p2.y -> . wiekszy priorytet
+&sp -> y
+kolejnosc w koniunkcji ma znaczenie && jesli peirwszy spelniony to drugi warunek sprawdzany jesli nie to do drugiego nawet nie idziemy
+uważać na to, bo punkty zabierac moze z lub to samo jesli pierwsze prawdziwe to drugi warunek nie sprawdzamy
+
+
+
+
+listy jednokierunkowe, kolejki ->> na nastepnych
+
+
+
