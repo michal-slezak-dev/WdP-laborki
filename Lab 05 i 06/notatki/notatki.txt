@@ -1,0 +1,83 @@
+struct Punkt {
+float x, y;
+} p1, *p2;
+
+scanf(""%f",&p1.x);
+scanf() &p2->x lub &(*p2).x
+
+
+
+LISTY JEDNOKIERUNKOWE
+koljeka -> wazna hierarchia
+fifo first in first out kolejka w sklepie 
+lifo last in first out talerze na sobie
+
+stos -> struktura, w ktorej odkladamy pewne elementy, pierwszy jestgeneralnuie ostatnim elementem, lifo
+
+jak dziry w tablicy to tablica nie zostanie zaalokowana 
+
+unie - podobne do struktur, ale z jednego pola tylko mozna korzystac
+
+lista jednokierunkowa -> ma head zawiera adres pierwszej komorki listy, maja adresy i wartosci do nastepnyvh
+
+
+wskaznik musi nastepna komorke adres miec, wiec trzeba scalosci a nie fragmentu tylko przehchowaywac
+
+jesli heada utrace to utrace liste, zostaje zaalokowana pamiec i wyciek pamieci
+
+WIEC MUSZE KAZDA KOMORKE LISTY PRZEITEROWAC I FREE()
+
+
+jak nastepne to wystarczy zamiast nula w nasteonym dac adres nowego
+
+dane.wiek najpierw, bo wyZszy priorytet czyli najpierw wczyta mi imie i nazwisko i wiek i potem dopiero wskaznik do tego heada
+
+co jesli wiecej elementow
+to trzeba wlasna funkcje trzeba napisac i ustawi sie na ostatni element, zeby sie ustawila w liscie
+
+
+kropka wiekszy priorytet wiec najpierrw cztuje dane i potem do heada daje wskaznik na ta strukture co wczytalem dane
+
+jak zwolnic pamiec ? trzeba w petli po kazdej komorce zwolnic to no pomocniczym wskaznikiem
+
+
+LISTY JEDNOKIERUNKOWE
+koljeka -> wazna hierarchia
+fifo first in first out kolejka w sklepie 
+lifo last in first out talerze na sobie
+
+stos -> struktura, w ktorej odkladamy pewne elementy, pierwszy jestgeneralnuie ostatnim elementem, lifo
+
+jak dziry w tablicy to tablica nie zostanie zaalokowana 
+
+unie - podobne do struktur, ale z jednego pola tylko mozna korzystac
+
+lista jednokierunkowa -> ma head zawiera adres pierwszej komorki listy, maja adresy i wartosci do nastepnyvh
+
+
+wskaznik musi nastepna komorke adres miec, wiec trzeba scalosci a nie fragmentu tylko przehchowaywac
+
+jesli heada utrace to utrace liste, zostaje zaalokowana pamiec i wyciek pamieci
+
+WIEC MUSZE KAZDA KOMORKE LISTY PRZEITEROWAC I FREE()
+
+
+jak nastepne to wystarczy zamiast nula w nasteonym dac adres nowego
+
+dane.wiek najpierw, bo wyZszy priorytet czyli najpierw wczyta mi imie i nazwisko i wiek i potem dopiero wskaznik do tego heada
+
+co jesli wiecej elementow
+to trzeba wlasna funkcje trzeba napisac i ustawi sie na ostatni element, zeby sie ustawila w liscie
+
+
+LISTY DWUKIERUNKOWE
+w jednokierunkowych nie mozna sie cofnac
+dwukierunkowe - mozna w dwie srony chodzic, kazda komorka ma 2 wskazniki do nexta i previousa(prev)
+head i tail
+
+funkcja wstawiajaca musze spr czy glowa istnieje czy nie itd bo 1. element moze byc i glowa i ogonem
+
+funkcje powinnismy podzielic na 2 kat. 1. zmieniajace liste i te ktore zmieniaja powinny zwrocic nowa glowe, te ktore nie zmieniaja nie musze
+
+jesli oryginal to ** podwojny wskaznik i void
+

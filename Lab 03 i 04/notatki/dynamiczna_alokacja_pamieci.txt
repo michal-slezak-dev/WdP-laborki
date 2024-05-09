@@ -78,7 +78,7 @@ sp -> x = 8
 
 jak pobieram? sp -> nazwa, bez &, bo string, łancuch 
 &p2.y -> . wiekszy priorytet
-&sp -> y
+&sp -> y bo pobieram x
 kolejnosc w koniunkcji ma znaczenie && jesli peirwszy spelniony to drugi warunek sprawdzany jesli nie to do drugiego nawet nie idziemy
 uważać na to, bo punkty zabierac moze z lub to samo jesli pierwsze prawdziwe to drugi warunek nie sprawdzamy
 
