@@ -11,6 +11,7 @@ typedef struct Element_listy{
     struct Osoba dane;
     struct Element_listy* next;
 } ListaJ;
+
 //wstawianie na poczatek, lifo
 ListaJ* AddHead(ListaJ *head, struct Osoba d) // to head to adres calej struktury, dane to tez struct cala osoba
 {// head przekazuje jako wartosc adresu nwoa, wiec ja potrzebuje adresu heada a nie wartosci adresu nowej, wiec jeszcze jedna gwiazdka
