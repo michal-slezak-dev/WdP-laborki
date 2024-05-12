@@ -110,9 +110,9 @@ LinkedList* addTail(LinkedList *head, struct Person dta) // właściwie to możn
     {
         tmp = tmp->next; // szukam ostatniego elementu listy, czyli jak next będzie NULL to kończę pętlę
     }
-    tmp->next = new; // dodanie na koniec listy
+    tmp->next = new; // dodanie na koniec listy, dodaja nexta
 
-    return head;
+    return head; // head zostaje, ale nexta koncowego zmieniam na new
 }
 
 void displayList(LinkedList *head)
