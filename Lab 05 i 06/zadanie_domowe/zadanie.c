@@ -25,7 +25,6 @@ int main()
 {
 
     LinkedList* head = NULL;
-    LinkedList* tail = NULL;
     struct Person p1;
 
     // Dodaje 4 osoby na początek pustej listy
