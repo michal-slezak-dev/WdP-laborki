@@ -17,7 +17,7 @@ typedef struct ListElement
 LinkedList* addHead(LinkedList *head, struct Person dta);
 LinkedList* addTail(LinkedList *head, struct Person dta);
 void displayList(LinkedList *head);
-void displayReversedList(LinkedList *tail);
+void displayReversedList(LinkedList *head);
 LinkedList* freeMem(LinkedList *head, int delElementsNum);
 int listLen(LinkedList *head);
 
