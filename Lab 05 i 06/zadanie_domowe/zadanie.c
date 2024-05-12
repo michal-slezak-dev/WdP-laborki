@@ -72,7 +72,7 @@ int main()
     displayReversedList(head);
 
     // Usuwam utworzoną listę
-    head = freeMem(head, 0); // zeruje heada i taila, listę, najważniejsze!!!
+    head = freeMem(head, 0); // zeruje heada, listę, najważniejsze!!!
     head = NULL;
 
     return 0;
