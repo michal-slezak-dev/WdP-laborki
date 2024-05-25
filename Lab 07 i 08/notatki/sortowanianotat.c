@@ -45,7 +45,7 @@ void selection_sort(int tabl[], int n) // lub *tabl
         }
 
         //swapuje
-        // swap(tabl[i], indx);
+        // swap(tabl[i], tabl[indx]);
         int temp = tabl[i];
         tabl[i] = tabl[indx];
         tabl[indx] = temp;
