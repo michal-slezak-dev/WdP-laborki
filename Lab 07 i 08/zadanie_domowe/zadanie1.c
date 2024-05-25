@@ -34,7 +34,7 @@ int main()
         addHead(&head, &tail, d);
     }
 
-    printf("\nWszyskie wezly od poczatku: \n");
+    printf("\nWszyskie wezly wypisane od poczatku: \n");
     displayList(tail);
     // deleteFirstHeadElement(&head, &tail);
     // deleteList(&head, &tail);
