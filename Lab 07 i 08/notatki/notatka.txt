@@ -1,0 +1,35 @@
+LISTY DWUKIERUNKOWE
+
+
+
+FUNKCJE SORTUJĄCE
+rosnące/malejące/nierosnące/niemalejące
+
+w miejscu do sortowania nie wykorzystujemy dodatkowych struktur, np. bubble sort
+nie w miejscu wykorzysstuje dodatkowe dane, jest troche szybsze, ma swoje ograniczenia, whmaga pamięci, 
+
+stabilne 
+niestabilne nie ma pewności o tym że zachowamy kolejność elementów równych [1, 2, 1], ze pierwsza jedynka na miejscu 1. a druga na 2.
+
+zewnętrzne 
+wewnętrzne 
+
+1. bubble sort
+zbior posortowany rozszerza sie a niepostortowany kurzczy
+z wartownikiem, kiedy miejsce miala ostatnia zamiana
+
+2. selection sort
+zawsze szukamy elementu najmniejszego i zamieniamy z pierwszym elementem tablicy, a wlasciwie podtablicy
+
+3. insertion sort
+
+
+kubełkowe
+najpierw tablice kubelkow trzeba
+szukamy minimum 1 i maksimum 9 np.
+rozmiar = Wmax - Wmin + 1 = 9 - 1 + 1 = 9 dla naszego przykładu
+
+tworzymy tablice kubelkow
+to zliczamy ile jaki element wystepuje i inkrementujemy kubelki
+i potem w tablicy kubelkow przegaldamy je i zapelniamy tablifef wyjsciowa tyloma elementami ile wynosi nasz licznik z tablicy kubelkow
+
