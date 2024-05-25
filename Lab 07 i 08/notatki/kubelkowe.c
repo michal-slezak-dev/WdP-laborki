@@ -32,10 +32,10 @@ int main()
 
     int* kubelki = (int*)calloc(rozmiar_kubelki, sizeof(int)); // oczywiscie to w unkcji najepiej int tab[]
 
-    for(int i = 0; i < rozmiar_kubelki; i++) // lub i < n i - min bo chce w indeks zerowy trafic kubelka
+    for(int i = 0; i < n; i++) // lub i < n i - min bo chce w indeks zerowy trafic kubelka
     {   
-        if(i < n)
-            kubelki[tabl[i] - min]++; // i < n bo pod zerowym indeksem jest min wystpapienia, bo inaczej zakres tabliy wyczerpie
+        // if(i < n)
+        kubelki[tabl[i] - min]++; // i < n bo pod zerowym indeksem jest min wystpapienia, bo inaczej zakres tabliy wyczerpie
     }
 
     printf("\n");

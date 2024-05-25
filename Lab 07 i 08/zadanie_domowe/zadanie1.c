@@ -8,6 +8,7 @@ typedef struct ListElement
     struct ListElement *prev;
 }DoubleLinkedList;
 
+void mem_alloc_err(DoubleLinkedList* new);
 void addHead(DoubleLinkedList **head, DoubleLinkedList **tail, int key); // wsm to lepsza nazwa chyba by była addToHead i addToTail ;-)
 void addTail(DoubleLinkedList **head, DoubleLinkedList **tail, int key);
 void deleteList(DoubleLinkedList **head, DoubleLinkedList **tail);
@@ -63,10 +64,20 @@ int main()
     return 0;
 }
 
+void mem_alloc_err(DoubleLinkedList* new)
+{
+    if(new == NULL)
+    {
+        printf("Nie udalo sie zaalokowac pamieci :-(");
+        exit(1);
+    }
+}
+
 void addHead(DoubleLinkedList **head, DoubleLinkedList **tail, int key) //** bo adres heada chcemy i taila, na oryginale chcemy pracować
 {
     // 1. Alokacja pamięci
     DoubleLinkedList *new = (DoubleLinkedList*)malloc(sizeof(DoubleLinkedList));
+    mem_alloc_err(new);
 
     // 2. Zapisanie danych
     new->data = key;
@@ -90,6 +101,7 @@ void addTail(DoubleLinkedList **head, DoubleLinkedList **tail, int key)
 {   
     // 1. Alokacja pamięci
     DoubleLinkedList *new = (DoubleLinkedList*)malloc(sizeof(DoubleLinkedList));
+    mem_alloc_err(new);
 
     // 2. Zapisanie danych
     new->data = key;
