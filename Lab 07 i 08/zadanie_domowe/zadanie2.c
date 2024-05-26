@@ -19,7 +19,8 @@ int main()
 
     for(int i = 0; i < n; i++)
     {
-        arr[i] = rand()%20;
+        // arr[i] = rand()%20;
+        scanf("%d", &arr[i]);
     }
 
     printf("Tablica przed posortowaniem:\n");
@@ -31,6 +32,9 @@ int main()
     for(int i = 0; i < n; i++)
         printf("%d ", arr[i]);
 
+
+    free(arr);
+    arr = NULL;
 
     return 0;
 }
@@ -57,7 +61,7 @@ void selection_sort(int arr[], int n)
     for(int i = 0; i < n - 1; i++) // n - 1, bo j = i + 1, żeby nie wyszło poza zakres
     {
         firstIndx = i;
-        lastIndx = n - i - 1;
+        lastIndx = n - i - 1; // aktualny ostatni element
         for(int j = i + 1; j < n - i; j++)
         {
             if(arr[j] < arr[firstIndx])
@@ -72,15 +76,23 @@ void selection_sort(int arr[], int n)
         }
 
         // zamiana z minimum i pierwszy element z tablicy
-        int temp = arr[firstIndx];
-        arr[firstIndx] = arr[i];
-        arr[i] = temp;
+        if(firstIndx != i)
+        {
+            int temp = arr[firstIndx];
+            arr[firstIndx] = arr[i];
+            arr[i] = temp;
+        }
+
+        //zamiana z maximum i ostatni element tablicy
+        if(lastIndx != n - i - 1)
+        {
+            int temp = arr[lastIndx];
+            arr[lastIndx] = arr[n - i - 1];
+            arr[n - i - 1] = temp;
+        }
 
 
-        //zamiana z maximum
-        temp = arr[lastIndx];
-        arr[lastIndx] = arr[n - i - 1];
-        arr[n - i - 1] = temp;
 
     }
+    // printf("\n\nT%d %d\n", firstIndx, lastIndx);
 }
