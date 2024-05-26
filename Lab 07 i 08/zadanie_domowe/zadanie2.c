@@ -19,8 +19,8 @@ int main()
 
     for(int i = 0; i < n; i++)
     {
-        // arr[i] = rand()%20;
-        scanf("%d", &arr[i]);
+        arr[i] = rand()%20;
+        // scanf("%d", &arr[i]);
     }
 
     printf("Tablica przed posortowaniem:\n");
@@ -58,7 +58,7 @@ void swap(int *a, int *b)
 void selection_sort(int arr[], int n)
 {
     int firstIndx = 0, lastIndx = 0, tmpMin = 0, tmpMax = 0;
-    for(int i = 0; i < n / 2; i++) // n - 1, bo j = i + 1, żeby nie wyszło poza zakres
+    for(int i = 0; i < n / 2; i++) // n / 2, bo jednocześnie sortujemy przecież
     {
         firstIndx = i;
         lastIndx = n - i - 1; // aktualny ostatni element
@@ -79,30 +79,30 @@ void selection_sort(int arr[], int n)
         tmpMin = i;
         tmpMax = n - i - 1;
 
-        // if(arr[tmpMin] > arr[lastIndx] && arr[tmpMin] > arr[tmpMax])
-        // {
-        //     lastIndx = tmpMin;
-        // }
-        // if(arr[tmpMax] < arr[firstIndx] && arr[tmpMax] < arr[tmpMin])
-        // {
-        //     firstIndx = tmpMax;
-        // }
+        if(arr[tmpMin] > arr[lastIndx]) // wtedy to wartosc pod tmpMin najwieksza aktualnie
+        {
+            lastIndx = tmpMin;
+        }
 
-        // if(firstIndx == lastIndx)
-        // {
+        if(arr[tmpMax] < arr[firstIndx])
+        {
+            firstIndx = tmpMax;
+        }
 
-        // }
-
-        // zamiana z minimum i pierwszy element z tablicy, unikając zamiany, np. pierwszego z ostatnim i ostatniego z pierwszym
-        if(arr[firstIndx] < arr[tmpMin] && arr[firstIndx] < arr[lastIndx])
+        // zamiana z minimum i pierwszy element z tablicy
+        if(firstIndx != tmpMin) // jeśli równe tzn. że już na swoim miejscu jest
         {
             int temp = arr[firstIndx];
             arr[firstIndx] = arr[i];
             arr[i] = temp;
+            if(lastIndx == tmpMin) // wtedy lastIndex na złej pozycji jest
+            {
+                lastIndx = firstIndx;
+            }
         }
 
-        //zamiana z maximum i ostatni element tablicy, unikając zamiany, np. pierwszego z ostatnim i ostatniego z pierwszym
-        if(arr[lastIndx] > arr[tmpMax] && arr[lastIndx] > arr[firstIndx])
+        //zamiana z maximum i ostatni element tablicy
+        if(lastIndx != tmpMax)
         {
             int temp = arr[lastIndx];
             arr[lastIndx] = arr[n - i - 1];
