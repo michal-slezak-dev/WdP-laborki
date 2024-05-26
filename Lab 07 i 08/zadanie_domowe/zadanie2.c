@@ -93,8 +93,8 @@ void selection_sort(int arr[], int n)
         if(firstIndx != tmpMin) // jeśli równe tzn. że już na swoim miejscu jest
         {
             int temp = arr[firstIndx];
-            arr[firstIndx] = arr[i];
-            arr[i] = temp;
+            arr[firstIndx] = arr[tmpMin];
+            arr[tmpMin] = temp;
             if(lastIndx == tmpMin) // wtedy lastIndex na złej pozycji jest
             {
                 lastIndx = firstIndx;
@@ -105,8 +105,8 @@ void selection_sort(int arr[], int n)
         if(lastIndx != tmpMax)
         {
             int temp = arr[lastIndx];
-            arr[lastIndx] = arr[n - i - 1];
-            arr[n - i - 1] = temp;
+            arr[lastIndx] = arr[tmpMax];
+            arr[tmpMax] = temp;
         }
     }
     // printf("\n\nT%d %d\n", firstIndx, lastIndx);
