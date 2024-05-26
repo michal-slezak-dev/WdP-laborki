@@ -92,9 +92,11 @@ void selection_sort(int arr[], int n)
         // zamiana z minimum i pierwszy element z tablicy
         if(firstIndx != tmpMin) // jeśli równe tzn. że już na swoim miejscu jest
         {
-            int temp = arr[firstIndx];
-            arr[firstIndx] = arr[tmpMin];
-            arr[tmpMin] = temp;
+            // int temp = arr[firstIndx];
+            // arr[firstIndx] = arr[tmpMin];
+            // arr[tmpMin] = temp;
+            swap(&arr[tmpMin], &arr[firstIndx]);
+
             if(lastIndx == tmpMin) // wtedy lastIndex na złej pozycji jest
             {
                 lastIndx = firstIndx;
@@ -104,9 +106,10 @@ void selection_sort(int arr[], int n)
         //zamiana z maximum i ostatni element tablicy
         if(lastIndx != tmpMax)
         {
-            int temp = arr[lastIndx];
-            arr[lastIndx] = arr[tmpMax];
-            arr[tmpMax] = temp;
+            // int temp = arr[lastIndx];
+            // arr[lastIndx] = arr[tmpMax];
+            // arr[tmpMax] = temp;
+            swap(&arr[tmpMax], &arr[lastIndx]);
         }
     }
     // printf("\n\nT%d %d\n", firstIndx, lastIndx);
