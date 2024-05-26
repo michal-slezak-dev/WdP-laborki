@@ -83,7 +83,7 @@ void addHead(DoubleLinkedList **head, DoubleLinkedList **tail, int key) //** bo 
     new->data = key;
     new->next = new->prev = NULL; // w przypadku, gdy lista pusta jest
 
-    new->next = *head; // zapisujemy dostęp jakby do dalszej części listy, zeby na 1. element wskazywal head, jeśli pusta to to co w 33. linijce będzie i tak
+    new->next = *head; // zapisujemy dostęp jakby do dalszej części listy, zeby na 1. element wskazywal head, jeśli pusta to to co w 84. linijce będzie i tak
 
     if(*head != NULL) //  jesli niepusta to tail zostaje tam gdzie był początkowo
     {
@@ -107,7 +107,7 @@ void addTail(DoubleLinkedList **head, DoubleLinkedList **tail, int key)
     new->data = key;
     new->next = new->prev = NULL; // jeśli lista pusta to head = tail i na NULL wskazuje next i prev
 
-    new->prev = *tail; // // zapisujemy dostęp jakby do dalszej części listy, zeby na ostatni element wskazywal tail, jeśli pusta to to co w 75. linijce będzie i tak
+    new->prev = *tail; // // zapisujemy dostęp jakby do dalszej części listy, zeby na ostatni element wskazywal tail, jeśli pusta to to co w 108. linijce będzie i tak
 
     if(*tail != NULL)
     {
@@ -146,6 +146,13 @@ void deleteFirstHeadElement(DoubleLinkedList **head, DoubleLinkedList **tail)
         free(*head);
         *head = tmp;
         // }
+
+        // (*head)->prev = NULL;
+        // if(*head == NULL)
+        // {
+        //     *tail = NULL;
+        // }
+        
         if(*head != NULL) // przypadek jeśli tylko 1 element był listy
         {
             (*head)->prev = NULL; // tu musze dodać, bo pierwotnie kolejny element, wskazywal w  previe na heada, ale 1. element usunalem, wiec musze ustawic prev nowego heada na NULL
