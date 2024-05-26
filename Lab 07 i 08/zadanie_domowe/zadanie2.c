@@ -57,8 +57,8 @@ void swap(int *a, int *b)
 
 void selection_sort(int arr[], int n)
 {
-    int firstIndx = 0, lastIndx = 0;
-    for(int i = 0; i < n - 1; i++) // n - 1, bo j = i + 1, żeby nie wyszło poza zakres
+    int firstIndx = 0, lastIndx = 0, tmpMin = 0, tmpMax = 0;
+    for(int i = 0; i < n / 2; i++) // n - 1, bo j = i + 1, żeby nie wyszło poza zakres
     {
         firstIndx = i;
         lastIndx = n - i - 1; // aktualny ostatni element
@@ -75,24 +75,39 @@ void selection_sort(int arr[], int n)
             }
         }
 
-        // zamiana z minimum i pierwszy element z tablicy
-        if(firstIndx != i)
+        // zmienne pomocnicze
+        tmpMin = i;
+        tmpMax = n - i - 1;
+
+        // if(arr[tmpMin] > arr[lastIndx] && arr[tmpMin] > arr[tmpMax])
+        // {
+        //     lastIndx = tmpMin;
+        // }
+        // if(arr[tmpMax] < arr[firstIndx] && arr[tmpMax] < arr[tmpMin])
+        // {
+        //     firstIndx = tmpMax;
+        // }
+
+        // if(firstIndx == lastIndx)
+        // {
+
+        // }
+
+        // zamiana z minimum i pierwszy element z tablicy, unikając zamiany, np. pierwszego z ostatnim i ostatniego z pierwszym
+        if(arr[firstIndx] < arr[tmpMin] && arr[firstIndx] < arr[lastIndx])
         {
             int temp = arr[firstIndx];
             arr[firstIndx] = arr[i];
             arr[i] = temp;
         }
 
-        //zamiana z maximum i ostatni element tablicy
-        if(lastIndx != n - i - 1)
+        //zamiana z maximum i ostatni element tablicy, unikając zamiany, np. pierwszego z ostatnim i ostatniego z pierwszym
+        if(arr[lastIndx] > arr[tmpMax] && arr[lastIndx] > arr[firstIndx])
         {
             int temp = arr[lastIndx];
             arr[lastIndx] = arr[n - i - 1];
             arr[n - i - 1] = temp;
         }
-
-
-
     }
     // printf("\n\nT%d %d\n", firstIndx, lastIndx);
 }
