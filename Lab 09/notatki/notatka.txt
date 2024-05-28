@@ -1,0 +1,138 @@
+PLIKI
+
+nowy typ danych FILE
+FILE to struktura
+
+żeby się do niej dostac to wskaznik plikowy potrzebujemy
+
+FILE *plik; // lapka tam gdzie jest plik zapisany 
+
+wiekszosc funkcji z przedrostkiem f to do plikow glownie
+
+
+fgets sluzy w domysle do pobierania danych z pliku, 1,. arg z jakiego pliku dane, domyslnnie stdin stdout stderr
+
+pliki standardowe stdin klawiatura stdout monitor wyrzuca na ekran jak zwykly printf stderr tez domyslnie ekran, czasami mozna wyrzucac dane niekoniecznie na ekran, np. na drukarke
+
+fgets z stdin z klawiatury
+
+stderr, zeby bledy sie nie pojawialy
+
+plik = fopen(zrodlo, tryb);
+
+pliki binarne szybciej odczytywan, ale binarne wieksze
+
+po co rozroznienie
+char ma 1 bajt
+w pliku binarnym tekst zostanie zdekodowany na binarny
+
+w tekstowyn "1234" jako tekst a nie liczba a w binarnym 4 bajty 4 bajty 4 bajty 4 bajty dla kazdej oddzielnej cyfry
+w tekstowym to zwqsze 1 bajt dla chara
+
+"1 2 3 4" -> 7 bajtow w tekstowym
+
+4 bajty 4 bajty ... te cyfry, bo int ma 4 bajty -> 16 bajtow
+
+1.23 -> tracimy precyzje w tekstowym
+1.230747750 nie bede wiedzial co dalej w binarnym
+
+1/3 -> 0.3333 4 miejsca po przecinku dommyslnie
+a w binarnym pelna reprezentacje tyle ile float pozwala mi zapisac
+
+tekst tekstowy
+binaria to binarnie
+
+zalezy co chcemy
+w tekstowym trace precyzje
+w binarnym nie 
+
+
+fopen("sciezka", "tryb"), sciezka to folder pelnej sciezki, szuka w danej lokalizacji plik, jesli znajdzie to otwiera do odczytu jesli nie to nulla zwraca
+r read only
+r+ do czytania i nadpisywania(aktualizacja)
+w write zapis zamazuje stara tresc potencjalnie niebezpieczne, bardziej do testowania, pusty plik
+w+ do nadpisywania i czytania
+
+a append dodawanie na koniec, jesli plik nie istnieje to jest utworzony do zapisu, jesli jest to jest wskaznik ustawiany na koniec do dodawania tresci
+a+ jesli nie ma to tworzy i na poczatku wskaznik
+
+t plik tekstowy
+b binarny
+
+i = fclose(plik);
+
+wt zapis tekstowy mozna laczyc
+w domysle zawsze tekstowy
+
+.f domyslnie 6 miejscale sam float 8 miejsc pozwala double 15
+return 1 bo byl blad
+jesli nie fclose to plik zamkniety ale dane nie zostana utrwalone
+
+
+EOF znak kontrolny oznaczajacy koniec pliku
+przyjmuje watosc -1 Taki terminator jak w lancuchach to tutaj dla plikow
+
+int putc(int c, FILE* stream) wloz chara do pliku, ASCII dodaje znak newline
+
+int fputs(const char *s, FILE* stream) wrzucamy stringa do pliku nie dodaje znaku newline
+
+fprintf(FILE *stream, const char *format, lista zmiennych)
+
+feof jedyny argument to plik, sprawdza czy nie jestesmy na koncu pliku
+
+while(!feof(plik)) sprawdza czy jest juz koniec pliku
+
+getc pojedynczy znak odczytuje
+fgets lancuch znakow odczytuje
+
+przy getc to znak po znaku musze
+
+fgets to nie musze moge pobrac tyle ile chce znakow
+
+wrzucam znak do pliku i wskaznik automatycznie sie przesuwa io jedna pozycje zebysmy mogli dalej zapisywac
+nie trzeba sie martwic o przesuwani
+
+
+fscanf(file stream const chat format)
+
+PLIKI BINARNE
+
+fwrite zapis blokowy 
+*ptr size nitems stream
+&... rozmiar elementow nitems do pliku stream
+
+freadodczyt blokowy 
+odczytuje cala tablice danych
+
+if(f) sprawdzam czy jestcala tablice wrzucam do pliku
+
+a jak pojedyncza ?
+fwrite(&x, sizeof(float), 1, plik);
+
+PRZEMIESZCZANIE SIE PO PLIKACH
+mozna wymusic przesuniecie
+fseek ma 3 argumentym, wskaznik plikowy offset i mode SEEK_SET, SEET_CUR SEEK_END long offset
+
+SEEK_SET poczatek pliku
+SEEK_CUR biezaca pozycja
+SEEK_END koniec pliku
+
+jesli chce sie 5 bajtow od poczatku przesunac do konca to fseek(file, 5*sizeof(int), SEEK_SET)
+plik.txt wb -> tylko po tom, zeby ulatwic sobie zapis i odczyt
+
+trzeba po zapisie zamknac i potem znowu
+
+fread automatycznie przesuwa wskaznik na kolejna pozycje
+
+fgetpos pobierz pozycje pliku, jako flaga, zapisana w zmiennej przedrostkiem
+fsetpos wracam do zapamietanego piejsca, flagi
+
+ftell zwraca biezaca pozycje pliku w bajtach, od poczatku i ozycja pliku jest zwracana w bajtach
+jesli inty to np /4 zeby dowiedziec sie na ktorej pozycji jestemst
+
+rewind wraca na poczatek pliku 
+zamazlo mi 1 4 po zapisuje mi 999  i to 9 9 9 spacje mi nadpisuje 1 4 
+
+ftell(f)/sizeof(typ) to dowiem sie ile wartosci mam w pliku, rozmiar danych, w pliku musze zapisywac dane teg osamego typu to jedyny warunek
+
+
