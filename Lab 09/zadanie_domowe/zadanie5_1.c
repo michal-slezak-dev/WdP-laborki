@@ -3,15 +3,16 @@
 #include <time.h>
 
 int random_num_gen(int n);
-int file_err(FILE *file);
+// int file_err(FILE *file, const char *file_name);
+void display_file_content(FILE *file, const char *file_name, int *n); // na oryginale n moge pracować wsm, można też dać bez * i na kopii pracować w sumie
 
 int main()
 {
     srand(time(NULL));
 
     FILE *file, *file_positive, *file_negative;
-    file = fopen("dane1.txt", "w");
 
+    file = fopen("dane1.txt", "w");
     if(!file) // jeśli coś poszło nie tak, moznaby to wsm do funkcji dać
     {
         return 1;
@@ -29,7 +30,6 @@ int main()
     fclose(file);
 
     file = fopen("dane1.txt", "r");
-
     if(!file) // coś poszło nie tak z otwarciem pliku
     {
         return 1;
@@ -50,7 +50,7 @@ int main()
     }
 
     // pobieram wartości z dane1.txt nie używając n i odpowiednio dadatnie liczby dodaje do dodatnie.txt a ujemne do ujemne.txt
-    while(fscanf(file, "%d", &n) != EOF) // n i tak już nie używam i sprawdzam czy nie doszedłem do końca pliku
+    while(fscanf(file, "%d", &n) != EOF) // n i tak już nie używam, bo nie moge, wiec sprawdzam czy nie doszedłem do końca pliku
     {   
         if(n == 0)
         {
@@ -64,27 +64,32 @@ int main()
         }
     }
 
+    // wracam na początek plików, żeby znowu się w otwieranie nie bawić ;-)
     fseek(file, 0, SEEK_SET);
     fseek(file_positive, 0, SEEK_SET);
     fseek(file_negative, 0, SEEK_SET);
 
-    printf("Zawartosc pliku dane1.txt:\n");
-    while(fscanf(file, "%d", &n) != EOF)
-    {
-        printf("%d ", n);
-    }
+    display_file_content(file, "dane1.txt", &n);
+    display_file_content(file_positive, "dodatnie.txt", &n);
+    display_file_content(file_negative, "ujemne.txt", &n);
 
-    printf("\n\nZawartosc pliku dodatnie.txt:\n");
-    while(fscanf(file_positive, "%d", &n) != EOF)
-    {
-        printf("%d ", n);
-    }
+    // printf("Zawartosc pliku dane1.txt:\n");
+    // while(fscanf(file, "%d", &n) != EOF)
+    // {
+    //     printf("%d ", n);
+    // }
 
-    printf("\n\nZawartosc pliku ujemne.txt:\n");
-    while(fscanf(file_negative, "%d", &n) != EOF)
-    {
-        printf("%d ", n);
-    }
+    // printf("\n\nZawartosc pliku dodatnie.txt:\n");
+    // while(fscanf(file_positive, "%d", &n) != EOF)
+    // {
+    //     printf("%d ", n);
+    // }
+
+    // printf("\n\nZawartosc pliku ujemne.txt:\n");
+    // while(fscanf(file_negative, "%d", &n) != EOF)
+    // {
+    //     printf("%d ", n);
+    // }
 
     fclose(file);
     fclose(file_positive);
@@ -95,16 +100,27 @@ int main()
 
 int random_num_gen(int n)
 {
-    int random_num = (rand()%100-50); // [-50;49]
+    int random_num = (rand() % 100 - 50); // [-50;49]
 
     return random_num;
 }
 
-int file_err(FILE *file)
+void display_file_content(FILE *file, const char *file_name, int *n)
 {
-    if(!file) // coś nie tak poszło podczas otwierania pliku fopen()
-    {   
-        printf("Cos poszlo nie tak z plikiem ;-(");
+    printf("Zawartosc pliku %s:\n", file_name);
+    while(fscanf(file, "%d", n) != EOF)
+    {
+        printf("%d ", *n);
     }
-    return 1;
+    printf("\n");
 }
+
+// int file_err(FILE *file, const char *file_name)
+// {
+//     if(!file) // coś nie tak poszło podczas otwierania pliku fopen()
+//     {   
+//         printf("Cos poszlo nie tak z otwieraniem pliku %s ;-(", file_name);
+//     }
+//     return 1;
+// }
+
