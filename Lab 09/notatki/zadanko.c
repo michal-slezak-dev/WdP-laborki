@@ -7,7 +7,7 @@ int main()
     
     srand(time(NULL));
 
-    FILE *plik = fopen("plik.txt", "a"); // tylko tu plik.txt z w na a
+    FILE *plik = fopen("plik.txt", "r+"); // tylko tu plik.txt z w na a
     if(!plik)
     {   
         printf("Nie ma pliku");
@@ -21,7 +21,7 @@ int main()
     for(int i = 0; i < n; i++)
     {
         // cyferka po cyferce, musze miec separator tabl, newline, spacja, przecinek nie bo to char
-        fprintf(plik, "%d ", rand()%100 + 1);
+        fprintf(plik, "%d ", rand()%100 - 100);
     }
 
     fclose(plik);

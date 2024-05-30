@@ -49,7 +49,7 @@ w binarnym nie
 
 fopen("sciezka", "tryb"), sciezka to folder pelnej sciezki, szuka w danej lokalizacji plik, jesli znajdzie to otwiera do odczytu jesli nie to nulla zwraca
 r read only
-r+ do czytania i nadpisywania(aktualizacja)
+r+ do czytania i nadpisywania(aktualizacja), nadpisuje na poczatku
 w write zapis zamazuje stara tresc potencjalnie niebezpieczne, bardziej do testowania, pusty plik
 w+ do nadpisywania i czytania
 
@@ -136,3 +136,8 @@ zamazlo mi 1 4 po zapisuje mi 999  i to 9 9 9 spacje mi nadpisuje 1 4
 ftell(f)/sizeof(typ) to dowiem sie ile wartosci mam w pliku, rozmiar danych, w pliku musze zapisywac dane teg osamego typu to jedyny warunek
 
 
+do pliku bin wartosci i odczytali ftell itd fseek itd, zeby policzyc ile struktur w pliku
+
+tylko rzeczy ktore na zajeciach byly 
+zadania takie jak na pracach domowych, ale 60 minut
+z 3 zadania
