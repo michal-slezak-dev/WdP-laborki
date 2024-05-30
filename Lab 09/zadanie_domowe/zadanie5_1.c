@@ -12,7 +12,7 @@ int main()
 
     FILE *file, *file_positive, *file_negative;
 
-    file = fopen("dane1.txt", "w");
+    file = fopen("dane1.txt", "w"); // dla a+ też działa
     if(!file) // jeśli coś poszło nie tak, moznaby to wsm do funkcji dać
     {
         return 1;
@@ -36,7 +36,7 @@ int main()
     }
     
     // tworze 2 pliki tekstowe na "wyłuskiwanie" liczb dodatnich i ujemnych z pliku dane1.txt
-    file_positive = fopen("dodatnie.txt", "w+");
+    file_positive = fopen("dodatnie.txt", "w+"); // dla a+ też działa
     file_negative = fopen("ujemne.txt", "w+");
 
     if(!file_positive) // coś poszło nie tak
