@@ -13,9 +13,10 @@ int main()
     FILE *file, *file_positive, *file_negative;
 
     file = fopen("dane1.txt", "w"); // dla a+ też działa
-    if(!file) // jeśli coś poszło nie tak, moznaby to wsm do funkcji dać
+    if(!file) // jeśli coś poszło nie tak, moznaby to wsm do funkcji dać [obsluge bledow mozna do funkcji dac też]
     {
-        return 1;
+        fprintf(stderr, "Nie udalo sie otworzyc pliku dane1.txt ;-(");
+        return 1; // wtedy blad jakis z odczytem pliku
     }
 
     int n = 0;
@@ -32,7 +33,8 @@ int main()
     file = fopen("dane1.txt", "r");
     if(!file) // coś poszło nie tak z otwarciem pliku
     {
-        return 1;
+        fprintf(stderr, "Nie udalo sie otworzyc pliku dane1.txt ;-(");
+        return 1; // wtedy blad jakis z odczytem pliku
     }
     
     // tworze 2 pliki tekstowe na "wyłuskiwanie" liczb dodatnich i ujemnych z pliku dane1.txt
@@ -41,12 +43,14 @@ int main()
 
     if(!file_positive) // coś poszło nie tak
     {
-        return 1;
+        fprintf(stderr, "Nie udalo sie otworzyc pliku dodatnie.txt ;-(");
+        return 1; // wtedy blad jakis z odczytem pliku
     }
 
     if(!file_negative) // coś poszło nie tak
     {
-        return 1;
+        fprintf(stderr, "Nie udalo sie otworzyc pliku ujemne.txt ;-(");
+        return 1; // wtedy blad jakis z odczytem pliku
     }
 
     // pobieram wartości z dane1.txt nie używając n i odpowiednio dadatnie liczby dodaje do dodatnie.txt a ujemne do ujemne.txt
@@ -64,8 +68,8 @@ int main()
         }
     }
 
-    // wracam na początek plików, żeby znowu się w otwieranie nie bawić ;-)
-    fseek(file, 0, SEEK_SET);
+    // wracam na początek plików, żeby znowu się w otwieranie nie bawić ;-), ale można też zamknąć teraz i potem znowu otworzyć do odczytu
+    fseek(file, 0, SEEK_SET); // rewind(file) wsm można też dać 
     fseek(file_positive, 0, SEEK_SET);
     fseek(file_negative, 0, SEEK_SET);
 
