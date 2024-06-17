@@ -85,7 +85,7 @@ LinkedList* addHead(LinkedList *head, struct Person dta) // *head, bo chce wska�
     
     // 2. Zapisanie danych
     new->data = dta;
-    new->next = head; // zapisuje adres do pozostałej części listy, bo w lewo się przesuwam
+    new->next = head; // zapisuje adres do pozostałej części listy, bo w lewo się przesuwam == null i potem new next = head ?
 
     // 3. Dołączenie
     head = new; // nowa głowa, wskazuje na zawartosc jako new
@@ -101,16 +101,27 @@ LinkedList* addTail(LinkedList *head, struct Person dta) // właściwie to możn
 
     // 2. Zapisanie danych
     new->data = dta;
-    new->next = NULL;
+    new->next = NULL; // a co jesli pusta???!!!!
 
     // 3. Dołączenie
     // tail = new;
     LinkedList *tmp = head;
-    while(tmp->next)
+    if(head)
     {
-        tmp = tmp->next; // szukam ostatniego elementu listy, czyli jak next będzie NULL to kończę pętlę
+        while(tmp->next)
+        {
+            tmp = tmp->next; // szukam ostatniego elementu listy, czyli jak next będzie NULL to kończę pętlę
+        }
+        tmp->next = new; // dodanie na koniec listy, dodaja nexta
+    }else
+    {
+        head = new;
     }
-    tmp->next = new; // dodanie na koniec listy, dodaja nexta
+    // while(tmp->next)
+    // {
+    //     tmp = tmp->next; // szukam ostatniego elementu listy, czyli jak next będzie NULL to kończę pętlę
+    // }
+    // tmp->next = new; // dodanie na koniec listy, dodaja nexta
 
     return head; // head zostaje, ale nexta koncowego zmieniam na new
 }
@@ -128,7 +139,7 @@ void displayList(LinkedList *head)
 
 void displayReversedList(LinkedList *head)
 {   
-    if(head == NULL)
+    if(head == NULL) // tutaj lepiej dac warunek odwrotny, bo niby void a jednak returna dalem
     {
         return; // warunek stop
     }else

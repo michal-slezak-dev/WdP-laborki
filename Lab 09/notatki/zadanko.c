@@ -60,13 +60,5 @@ int main()
     fprintf(stdout,"min %d max %d suma %d srednia %f, licznik %d", min, max, suma, srednia, licznik); // tak tez mozna jak damy stdout
     printf("\nmin %d max %d suma %d srednia %.3f licznik %d", min, max, suma, srednia, licznik);
 
-
-
-
-
-
-
-
-
     return 0;
 }

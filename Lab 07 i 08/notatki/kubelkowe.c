@@ -7,7 +7,7 @@ int main()
     int n = 10;
     for(int i = 0; i < n; i++)
     {
-        tabl[i] = rand()%20;
+        tabl[i] = rand()%20 + 5;
     }
     
     int min = tabl[0], max = tabl[0];

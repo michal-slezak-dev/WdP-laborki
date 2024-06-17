@@ -58,7 +58,6 @@ void addHead(LinkedList **head, LinkedList **tail, int key) // napewno powinna z
         // *head = *tail = new;
         *tail = new; // bo sie powatarza *head = new to mozna dac po ifie 
     }
-
         // 3. Dołączenie
         *head = new; // nowa głowa, wskazuje na zawartosc jako new
 
